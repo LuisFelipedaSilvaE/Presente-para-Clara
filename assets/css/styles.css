@@ -1,0 +1,569 @@
+/* :root serve para criar variáveis css */
+
+:root {
+  --primary-color: #330055;
+  --white: #FFFFFF;
+  --black: #000000;
+  --gray: rgba(120, 120, 120, 0.5);
+  --very-light-gray: #EEEEEE;
+  --gap: 3rem;
+  --secondary-color: #DC143C;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2rem;
+  color: var(--primary-color);
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-size: 6rem;
+  text-transform: uppercase;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-size: 6rem;
+  margin-bottom: 5rem;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 5rem;
+}
+
+h4 {
+  font-size: 4.5rem;
+}
+
+h5 {
+  font-size: 4rem;
+}
+
+h6 {
+  font-size: 3.5rem;
+}
+
+p {
+    margin-bottom: 3rem;
+}
+
+table {
+  min-width: 60rem;
+  border-collapse: collapse;
+}
+
+table caption {
+  /* Describes how inline contents of a block are horizontally aligned 
+  if the contents do not completely fill the line box. */
+  text-align: left;
+  font-style: italic;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+table td, table th {
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  border: 0.1rem solid var(--very-light-gray);
+}
+
+tfoot td, table th {
+  background-color: var(--very-light-gray);
+}
+
+.white-bg {
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
+.main-bg {
+  /* ./ (ponto-barra): Refere-se ao diretório ATUAL.
+  ../ (ponto-ponto-barra): Refere-se ao diretório PAI
+  (um nível acima). */
+  background-image: url('../img/main-bg.svg');
+  background-size: cover;
+  background-position: center center;
+  color: var(--white);
+  z-index: 0;
+}
+
+.main-content {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 10rem var(--gap);
+}
+
+.section {
+  min-height: 100vh;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+  border-bottom: 0.1rem solid var(--very-light-gray);
+}
+
+.menu-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+}
+
+.menu h1 {
+  font-size: 2.3rem;
+}
+
+.menu h1 a {
+  color: var(--primary-color);
+}
+
+.menu ul {
+  display: flex;
+  list-style: none;
+}
+
+.menu ul li a {
+  display: block;
+  padding: 2rem;
+  font-size: 1.8rem;
+  position: relative;
+}
+
+.menu ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  width: 0;
+  height: 0.2rem;
+  background-color: var(--secondary-color);
+  transition: all 300ms ease-in-out;
+}
+
+.menu ul li a:hover::after {
+  width: 50%;
+  left: 25%;
+}
+
+.menu-spacing {
+  height: 6.48rem;
+}
+
+.intro-content {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--gap);
+  min-height: 100vh;
+}
+
+.intro-text-content, .intro-img {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+
+.intro-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+.top3-content {
+  max-width: 64rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.centered-heading {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.centered-heading img {
+  border-radius: 1rem;
+  transition: all 300ms ease-in-out;
+}
+
+.centered-heading img:hover {
+  cursor: pointer;
+  scale: 1.1;
+  rotate: 5deg;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  /* criando um contador na classe grid, com o nome "grid-counter" */
+  counter-reset: grid-counter;
+}
+
+.grid .last-skill {
+  grid-column: 3;
+}
+
+.grid-one-content {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.grid-main-heading {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.grid-description {
+  padding-bottom: 5rem;
+}
+
+.grid .main-h3-heading, .grid-two .main-h3-heading {
+  font-size: 3rem;
+  position: relative;
+  padding-left: 5rem;
+  padding-bottom: 2rem;
+}
+
+.grid .main-h3-heading::before, .grid-two .main-h3-heading::before {
+  counter-increment: grid-counter;
+  content: counter(grid-counter);
+  position: absolute;
+  font-size: 8rem;
+  font-style: italic;
+  top: -4rem;
+  left: -2rem;
+  transform: rotate(5deg);
+}
+
+.grid-two {
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: var(--gap);
+  /* criando um contador na classe grid, com o nome "grid-counter" */
+  counter-reset: grid-counter;
+}
+
+.grid-two > div.centered-heading:first-child {
+  padding-top: 3.5rem;
+}
+
+#work .grid-main-heading {
+  margin-bottom: 8rem;
+}
+
+.skin-cell {
+  width: 36rem;
+  height: 36rem;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+}
+
+.gallery-img {
+  width: 100%;
+  max-width: 36rem;
+  max-height: 36rem;
+  overflow: hidden;
+}
+
+.gallery-img .skin-cell {
+  transition: all 300ms ease-in-out;
+}
+
+.gallery-img .skin-cell:hover {
+  cursor: pointer;
+  translate: 1.5%, -1.5%;
+  scale: 1.2;
+  rotate: 5deg;
+}
+
+.responsive-table {
+  overflow-x: auto;
+}
+
+.contact-form {
+  grid-column: span 2;
+}
+
+.contact-form .form-grid {
+  border: none;
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--gap);
+}
+
+.form-grid legend {
+  font-style: italic;
+  font-size: 1.6rem;
+  margin-bottom: 3rem;
+}
+
+.form-group {
+  flex: 1 1 32rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+  color: var(--white);
+  transition: all 300ms ease-in-out;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 1.5rem 2rem;
+  width: 100%;
+  font-size: 3rem;
+  outline: none;
+  border-radius: 1rem;
+  border: 0.2rem solid var(--white);
+}
+
+.form-group input:hover,
+.form-group textarea:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 0.2rem solid var(--black);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  caret-color: var(--white);
+  box-shadow: 0 0 1rem 0.25rem var(--primary-color);
+}
+
+body .full-width {
+  width: 100%;
+  flex: 1 1 100%;
+}
+
+.form-group button {
+  border: 0.5rem solid var(--white);
+  background: none;
+  color: var(--white);
+  padding: 1.5rem 2rem;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+.form-group button:hover {
+  border-radius: 1rem;
+  background: var(--white);
+  color: var(--primary-color);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--very-light-gray);
+}
+
+.form-group input:hover::placeholder,
+.form-group textarea:hover::placeholder {
+  color: var(--black);
+}
+
+.footer {
+  text-align: center;
+  color: #4b0082;
+}
+
+.footer p {
+  margin: 0;
+  padding: 3rem;
+}
+
+.heart {
+  transition: all 300ms ease-in-out;
+  transform: scale(1) rotate(0);
+  display: inline-block;
+}
+
+#centered-contact-form-button {
+  display: flex;
+  place-content: center;
+}
+
+.heart:hover {
+  cursor: grabbing;
+  translate: 0 -15px;
+  scale: 2.5;
+  rotate: 360deg;
+}
+
+
+.back-to-top {
+  background-color: var(--gray);
+  border: 0.1rem solid var(--black);
+  color: var(--primary-color);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  bottom: 2rem;
+  right: 2rem;
+  width: 5rem;
+  height: 5rem;
+  transition: all 300ms ease-in-out;
+}
+
+.back-to-top:hover {
+  background-color: rgba(75, 0, 130, 0.75);
+}
+
+.back-to-top:hover::after {
+  color: var(--white);
+}
+
+.back-to-top::after {
+  content: '⇪';
+  color: var(--primary-color);
+  transition: all 300ms ease-in-out;
+  transform: scale(1.75);
+}
+
+.close-menu {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .intro-content, .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skin-cell {
+    width: 100%;
+  }  
+
+  .gallery-img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .intro-content .intro-img {
+    grid-column: span 2;
+  }
+
+  .menu {
+    bottom: 0;
+    border-bottom: none;
+    text-align: center;
+  }
+  
+  .menu-content, .menu-content ul {
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .menu-content {
+    height: 100vh;
+  }
+  
+  .menu {
+    display: none;
+  }
+
+  .close-menu-label::after {
+    content: '☰';
+    position: fixed;
+    z-index: 2;
+    top: 2rem;
+    right: 2rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 3rem;
+    line-height: 3rem;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    padding: 0.75rem;
+    cursor: pointer;
+  }
+
+  .close-menu:checked~.menu {
+    display: block;
+  }
+
+  .close-menu:checked~.close-menu-label::after {
+    content: '×';
+  }
+
+  .menu-spacing {
+    display: none;
+  }
+
+    .grid .last-skill {
+    grid-column: auto;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1225px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+  }
+
+  .skin-cell {
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }  
+
+  .gallery-img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .grid .last-skill {
+    grid-column: span 2;
+  }
+}

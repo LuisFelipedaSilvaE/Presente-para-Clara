@@ -426,7 +426,6 @@ body .full-width {
   rotate: 360deg;
 }
 
-
 .back-to-top {
   background-color: var(--gray);
   border: 0.1rem solid var(--black);
@@ -456,10 +455,6 @@ body .full-width {
   color: var(--primary-color);
   transition: all 300ms ease-in-out;
   transform: scale(1.75);
-}
-
-.close-menu {
-  display: none;
 }
 
 @media (max-width: 560px) {
@@ -510,29 +505,18 @@ body .full-width {
     display: none;
   }
 
-  .close-menu-label::after {
-    content: '☰';
+  .close-menu {
+    border-radius: 0.5rem;
     position: fixed;
     z-index: 2;
     top: 2rem;
     right: 2rem;
     background-color: var(--primary-color);
-    color: var(--white);
-    font-size: 3rem;
-    line-height: 3rem;
-    width: 3rem;
-    height: 3rem;
+    width: 5rem;
+    height: 5rem;
     text-align: center;
-    padding: 0.75rem;
+    padding: 0.85rem;
     cursor: pointer;
-  }
-
-  .close-menu:checked~.menu {
-    display: block;
-  }
-
-  .close-menu:checked~.close-menu-label::after {
-    content: '×';
   }
 
   .menu-spacing {

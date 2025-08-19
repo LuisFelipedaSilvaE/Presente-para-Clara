@@ -552,6 +552,19 @@ body .full-width {
     width: 65%;
   }
 
+  .x-menu > .first-child {
+    transform: translateY(0.8rem) rotate(45deg);
+  }
+
+  .x-menu > .mid-child {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .x-menu > .last-child {
+    transform: translateY(-1.035rem) rotate(-45deg);
+  }
+
   .menu-spacing {
     display: none;
   }

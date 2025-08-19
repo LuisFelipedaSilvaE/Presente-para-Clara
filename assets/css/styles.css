@@ -505,6 +505,21 @@ body .full-width {
     display: none;
   }
 
+  .hamburguer-menu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .hamburguer-menu > div {
+    transition: transform 300ms ease-in-out;
+    width: 100%;
+    border-radius: 1rem;
+    border: 0.2rem solid var(--white);
+  }
+  
   .close-menu {
     border-radius: 0.5rem;
     position: fixed;

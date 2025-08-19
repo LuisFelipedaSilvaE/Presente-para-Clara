@@ -427,8 +427,13 @@ body .full-width {
 }
 
 .back-to-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--gray);
-  border: 0.1rem solid var(--black);
+  width: 5rem;
+  height: 5rem;
+  border: 0.2rem solid var(--black);
   color: var(--primary-color);
   position: fixed;
   display: flex;
@@ -437,25 +442,14 @@ body .full-width {
   border-radius: 50%;
   bottom: 2rem;
   right: 2rem;
-  width: 5rem;
-  height: 5rem;
   transition: all 300ms ease-in-out;
 }
 
 .back-to-top:hover {
+  border: 0.2rem solid var(--secondary-color);
   background-color: rgba(75, 0, 130, 0.75);
 }
 
-.back-to-top:hover::after {
-  color: var(--white);
-}
-
-.back-to-top::after {
-  content: '⇪';
-  color: var(--primary-color);
-  transition: all 300ms ease-in-out;
-  transform: scale(1.75);
-}
 
 @media (max-width: 560px) {
   h1, h2, h3, h4, h5, h6 {

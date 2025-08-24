@@ -457,6 +457,133 @@ body .full-width {
   color: var(--white);
 }
 
+.card-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 6.78rem;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 6.78rem);
+  background: rgba(0, 0, 0, 0.55);
+  transition: all 300ms ease-in-out;
+}
+
+.card-container p {
+  margin-bottom: 0;
+}
+
+.card {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  max-width: 80vw;
+  max-height: calc(80vh - 6.78rem);
+  padding-bottom: 1.5rem;
+  background-color: var(--white);
+  transition: all 300ms ease-in-out;
+}
+
+.card-content {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3.5rem;
+  gap: 1.5rem;
+}
+
+.card-content > h4 {
+  font-weight: bold;
+}
+
+.card-content > h4 > span {
+  font-weight: normal;
+}
+
+.card-content > h4, .card-content > h4 > span {
+  font-size: 2rem;
+}
+
+.card-heading {
+  background-color: var(--very-light-gray);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  height: 3.5rem;
+  width: 100%;
+}
+
+.card-heading > h3 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-size: 1.75rem;
+  font-weight: 900;
+  justify-content: center;
+  align-items: center;
+}
+
+.card > .card-content > img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
+
+.card > .card-heading > .x-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0.85rem;
+  cursor: pointer;
+  background-color: var(--gray);
+  transition: all 300ms ease-in-out;
+}
+
+.card > .card-heading > .x-menu:hover {
+  background-color: var(--secondary-color);
+}
+
+.card > .card-heading > .x-menu:hover > div {
+  background-color: var(--white);
+  border: 0.2rem solid var(--white);
+}
+
+.card > .card-heading > .x-menu > div {
+  transition: transform 300ms ease-in-out;
+  transform-origin: center;
+  border-radius: 1rem;
+  max-width: 100%;
+  background-color: var(--black);
+  border: 0.2rem solid var(--black);
+}
+
+.card > .card-heading > .x-menu > .first-child {
+  transform: translateY(0.5rem) rotate(45deg);
+}
+
+.card > .card-heading > .x-menu > .mid-child {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.card > .card-heading > .x-menu > .last-child {
+  transform: translateY(-0.535rem) rotate(-45deg);
+}
+
+.last-skin {
+  grid-column: 2;
+}
+
 @media (max-width: 560px) {
   h1, h2, h3, h4, h5, h6 {
     font-size: 3rem;

@@ -1,13 +1,13 @@
 /* :root serve para criar variáveis css */
 
 :root {
-  --primary-color: #330055;
-  --white: #FFFFFF;
-  --black: #000000;
-  --gray: rgba(120, 120, 120, 0.5);
+  --primary-color: rgb(51, 0, 85);
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+  --gray: rgba(138, 138, 138, 0.5);
   --very-light-gray: rgb(238, 238, 238);
   --gap: 3rem;
-  --secondary-color: #DC143C;
+  --secondary-color: rgb(220, 20, 60);
 }
 
 * {
@@ -174,7 +174,7 @@ tfoot td, table th {
 }
 
 .menu-spacing {
-  height: 6.48rem;
+  height: 6.78rem;
 }
 
 .intro-content {
@@ -429,18 +429,18 @@ body .full-width {
 }
 
 .back-to-top {
-  width: 5rem;
-  height: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--gray);
+  width: 5rem;
+  height: 5rem;
+  border: 0.2rem solid var(--black);
+  color: var(--primary-color);
   position: fixed;
+  border-radius: 50%;
   bottom: 2rem;
   right: 2rem;
-  background-color: var(--gray);
-  color: var(--primary-color);
-  border: 0.2rem solid var(--black);
-  border-radius: 50%;
   transition: all 300ms ease-in-out;
 }
 
@@ -592,6 +592,10 @@ body .full-width {
   p {
     font-size: 1.5rem;
   }
+
+  .card-heading > h3 {
+    font-size: 1.25rem;
+  }
 }
 
 @media (max-width: 800px) {
@@ -601,9 +605,13 @@ body .full-width {
 
   .skin-cell {
     width: 100%;
-  }  
+    height: 100%;
+  }
 
   .gallery-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     max-width: 100%;
     max-height: 100%;
@@ -646,7 +654,7 @@ body .full-width {
     border-radius: 1rem;
     border: 0.2rem solid var(--white);
   }
-  
+
   .close-menu {
     border-radius: 0.5rem;
     position: fixed;
@@ -656,7 +664,6 @@ body .full-width {
     background-color: var(--primary-color);
     width: 5rem;
     height: 5rem;
-    text-align: center;
     padding: 0.85rem;
     cursor: pointer;
   }
@@ -665,7 +672,7 @@ body .full-width {
     display: block;
   }
 
-  .x-menu {
+  .close-menu .x-menu {
     width: 100%;
     height: 100%;
     display: flex;
@@ -674,25 +681,24 @@ body .full-width {
     align-items: center;
   }
 
-  .x-menu > div {
+  .close-menu .x-menu > div {
     transition: transform 300ms ease-in-out;
-    transform-origin: center;
     background-color: var(--white);
     border-radius: 1rem;
     border: 0.2rem solid var(--white);
     width: 65%;
   }
 
-  .x-menu > .first-child {
+  .close-menu .x-menu > .first-child {
     transform: translateY(0.8rem) rotate(45deg);
   }
 
-  .x-menu > .mid-child {
+  .close-menu .x-menu > .mid-child {
     opacity: 0;
     transform: scale(0);
   }
 
-  .x-menu > .last-child {
+  .close-menu .x-menu > .last-child {
     transform: translateY(-1.035rem) rotate(-45deg);
   }
 
@@ -700,22 +706,60 @@ body .full-width {
     display: none;
   }
 
-    .grid .last-skill {
+  .grid .last-skill {
     grid-column: auto;
+  }
+
+  .last-skin {
+    grid-column: auto;
+  }
+
+  .card-container {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    top: 0;
+    left: 0;
+    transition: all 300ms ease-in-out;
+  }
+
+  .card {
+    width: 80vw;
+    height: auto;
+    max-width: 80vw;
+    max-height: 80vh;
+  }
+
+  .card-content {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3.5rem;
+    gap: 1.5rem;
+  }
+
+  .card > .card-heading > .x-menu > .first-child {
+    transform: translateY(0.5rem) rotate(45deg);
+  }
+
+  .card > .card-heading > .x-menu > .mid-child {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .card > .card-heading > .x-menu > .last-child {
+    transform: translateY(-0.545rem) rotate(-45deg);
   }
 }
 
 @media (min-width: 800px) and (max-width: 1225px) {
-  .grid {
+  #gallery .grid {
     grid-template-columns: repeat(2, 1fr);
-    place-items: center;
   }
 
-  .skin-cell {
-    width: 100%;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+  #skills .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   #skills .grid .last-skill {
@@ -727,12 +771,57 @@ body .full-width {
   }
 
   .gallery-img {
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     max-width: 100%;
     max-height: 100%;
   }
 
-  .grid .last-skill {
+  .gallery-img .skin-cell {
+    width: 48rem;
+    min-width: 36rem;
+    height: 100%;
+    border-radius: 1rem;
+  }
+
+  .last-skin {
     grid-column: span 2;
+  }
+}
+
+@media (max-height: 850px) {
+  .card {
+    max-width: 70vw;
+    max-height: 70vh;
+  }
+
+  .card > .card-content > img {
+    max-height: 40vh;
+    object-fit: contain;
+  }
+}
+
+@media (max-height: 650px) {
+  .card {
+    max-width: 60vw;
+    max-height: 60vh;
+  }
+
+  .card-content h4,
+  .card-content span {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-height: 550px) {
+  .card {
+    width: auto;
+    max-width: 50vw;
+    max-height: 50vh;
+  }
+
+  .card > .card-content > img {
+    max-height: 30vh;
   }
 }

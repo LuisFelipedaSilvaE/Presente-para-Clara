@@ -716,7 +716,15 @@ body .full-width {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-  }  
+  }
+
+  #skills .grid .last-skill {
+    min-width: 35.5rem;
+    max-width: 55.5rem;
+    align-self: center;
+    justify-self: center;
+    grid-column: span 2;
+  }
 
   .gallery-img {
     width: 100%;

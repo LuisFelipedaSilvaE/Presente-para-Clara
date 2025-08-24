@@ -248,7 +248,11 @@ tfoot td, table th {
 }
 
 .grid-description {
-  padding-bottom: 5rem;
+  padding-bottom: 3rem;
+}
+
+#gallery p:nth-child(3) {
+  padding-bottom: 1rem;
 }
 
 .grid .main-h3-heading, .grid-two .main-h3-heading {
@@ -286,11 +290,8 @@ tfoot td, table th {
 }
 
 .skin-cell {
-  width: 36rem;
-  height: 36rem;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
   border-radius: 1rem;
 }
 

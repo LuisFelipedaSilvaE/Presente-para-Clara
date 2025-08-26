@@ -725,10 +725,12 @@ body .full-width {
   }
 
   .card {
-    width: 80vw;
-    height: auto;
-    max-width: 80vw;
-    max-height: 80vh;
+    justify-content: unset;
+    width: 90vw;
+    height: 55vh;
+    max-width: 100vw;
+    max-height: 90vh;
+    padding-bottom: 0;
   }
 
   .card-content {

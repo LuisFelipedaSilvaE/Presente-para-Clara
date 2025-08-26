@@ -22,7 +22,7 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 2rem;
   color: var(--primary-color);
   line-height: 1.5;
@@ -32,8 +32,13 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
   font-weight: 900;
 }
 
@@ -66,7 +71,7 @@ h6 {
 }
 
 p {
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 
 table {
@@ -83,14 +88,16 @@ table caption {
   font-size: 1.8rem;
 }
 
-table td, table th {
+table td,
+table th {
   white-space: nowrap;
   padding: 0.5rem 1rem;
   text-align: left;
   border: 0.1rem solid var(--very-light-gray);
 }
 
-tfoot td, table th {
+tfoot td,
+table th {
   background-color: var(--very-light-gray);
 }
 
@@ -103,7 +110,7 @@ tfoot td, table th {
   /* ./ (ponto-barra): Refere-se ao diretório ATUAL.
   ../ (ponto-ponto-barra): Refere-se ao diretório PAI
   (um nível acima). */
-  background-image: url('../img/main-bg.svg');
+  background-image: url("../img/main-bg.svg");
   background-size: cover;
   background-position: center center;
   color: var(--white);
@@ -158,7 +165,7 @@ tfoot td, table th {
 }
 
 .menu ul li a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 1rem;
   left: 50%;
@@ -185,7 +192,8 @@ tfoot td, table th {
   min-height: 100vh;
 }
 
-.intro-text-content, .intro-img {
+.intro-text-content,
+.intro-img {
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
@@ -255,14 +263,16 @@ tfoot td, table th {
   padding-bottom: 1rem;
 }
 
-.grid .main-h3-heading, .grid-two .main-h3-heading {
+.grid .main-h3-heading,
+.grid-two .main-h3-heading {
   font-size: 3rem;
   position: relative;
   padding-left: 5rem;
   padding-bottom: 2rem;
 }
 
-.grid .main-h3-heading::before, .grid-two .main-h3-heading::before {
+.grid .main-h3-heading::before,
+.grid-two .main-h3-heading::before {
   counter-increment: grid-counter;
   content: counter(grid-counter);
   position: absolute;
@@ -506,7 +516,8 @@ body .full-width {
   font-weight: normal;
 }
 
-.card-content > h4, .card-content > h4 > span {
+.card-content > h4,
+.card-content > h4 > span {
   font-size: 2rem;
 }
 
@@ -586,7 +597,12 @@ body .full-width {
 }
 
 @media (max-width: 560px) {
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-size: 3rem;
   }
 
@@ -600,7 +616,8 @@ body .full-width {
 }
 
 @media (max-width: 800px) {
-  .intro-content, .grid {
+  .intro-content,
+  .grid {
     grid-template-columns: 1fr;
   }
 
@@ -627,16 +644,17 @@ body .full-width {
     border-bottom: none;
     text-align: center;
   }
-  
-  .menu-content, .menu-content ul {
+
+  .menu-content,
+  .menu-content ul {
     flex-direction: column;
     justify-content: center;
   }
-  
+
   .menu-content {
     height: 100vh;
   }
-  
+
   .menu {
     display: none;
   }
@@ -727,10 +745,11 @@ body .full-width {
   .card {
     justify-content: unset;
     width: 90vw;
-    height: 55vh;
+    min-height: 55vh;
+    height: auto;
     max-width: 100vw;
     max-height: 90vh;
-    padding-bottom: 0;
+    padding-bottom: 1.5rem;
   }
 
   .card-content {
@@ -829,7 +848,7 @@ body .full-width {
   .card > .card-content {
     margin-top: auto;
     margin-bottom: auto;
-    
+
     align-self: center;
   }
 

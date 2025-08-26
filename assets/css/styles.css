@@ -493,6 +493,7 @@ body .full-width {
   flex-flow: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
   padding: 0 3.5rem;
   gap: 1.5rem;
 }
@@ -731,6 +732,7 @@ body .full-width {
   }
 
   .card-content {
+    margin: auto 0;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -814,14 +816,31 @@ body .full-width {
   }
 }
 
-@media (max-height: 550px) {
+@media (max-height: 575px) {
   .card {
     width: auto;
-    max-width: 50vw;
-    max-height: 50vh;
+    max-width: 55vw;
+    min-height: 90%;
+    padding-bottom: 0;
+  }
+
+  .card > .card-content {
+    margin-top: auto;
+    margin-bottom: auto;
+    
+    align-self: center;
   }
 
   .card > .card-content > img {
     max-height: 30vh;
+  }
+}
+
+@media (max-height: 575px) and (min-width: 800px) {
+  .card {
+    min-width: 50%;
+    max-width: 55vw;
+    max-height: 50%;
+    padding-bottom: 1.5rem;
   }
 }

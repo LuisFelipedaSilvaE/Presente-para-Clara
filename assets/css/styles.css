@@ -47,6 +47,33 @@ h1 {
   text-transform: uppercase;
 }
 
+.icon {
+  width: 0.75em;
+  fill: rgb(255, 0, 0);
+  animation: 1.5s heartBeat ease-in-out 0s infinite normal;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.2);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 h2 {
   text-transform: uppercase;
   font-size: 6rem;
@@ -421,6 +448,7 @@ body .full-width {
 }
 
 .heart {
+  animation: 1.5s heartBeat ease-in-out 0s infinite normal;
   transition: all 300ms ease-in-out;
   transform: scale(1) rotate(0);
   display: inline-block;
@@ -467,7 +495,7 @@ body .full-width {
   color: var(--white);
 }
 
-.card-container {
+.dialog-container {
   display: none;
   justify-content: center;
   align-items: center;
@@ -480,11 +508,11 @@ body .full-width {
   transition: all 300ms ease-in-out;
 }
 
-.card-container p {
+.dialog-container p {
   margin-bottom: 0;
 }
 
-.card {
+.dialog {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -494,11 +522,13 @@ body .full-width {
   max-width: 80vw;
   max-height: calc(80vh - 6.78rem);
   padding-bottom: 1.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
   background-color: var(--white);
   transition: all 300ms ease-in-out;
 }
 
-.card-content {
+.dialog-content {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -508,20 +538,20 @@ body .full-width {
   gap: 1.5rem;
 }
 
-.card-content > h4 {
+.dialog-content > h4 {
   font-weight: bold;
 }
 
-.card-content > h4 > span {
+.dialog-content > h4 > span {
   font-weight: normal;
 }
 
-.card-content > h4,
-.card-content > h4 > span {
+.dialog-content > h4,
+.dialog-content > h4 > span {
   font-size: 2rem;
 }
 
-.card-heading {
+.dialog-heading {
   background-color: var(--very-light-gray);
   display: flex;
   align-items: center;
@@ -531,9 +561,9 @@ body .full-width {
   width: 100%;
 }
 
-.card-heading > h3 {
+.dialog-heading > h3 {
   display: flex;
-  width: 100%;
+  width: calc(100% - 3.5rem);
   height: 100%;
   font-size: 1.75rem;
   font-weight: 900;
@@ -541,55 +571,49 @@ body .full-width {
   align-items: center;
 }
 
-.card > .card-content > img {
+.dialog > .dialog-content > img {
   object-fit: contain;
   width: 100%;
   height: 100%;
   border-radius: 1rem;
 }
 
-.card > .card-heading > .x-menu {
+.dialog > .dialog-heading > .x-menu {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-content: center;
+  align-items: center;
   width: 3.5rem;
   height: 3.5rem;
-  padding: 0.85rem;
   cursor: pointer;
   background-color: var(--gray);
   transition: all 300ms ease-in-out;
 }
 
-.card > .card-heading > .x-menu:hover {
+.dialog > .dialog-heading > .x-menu:hover {
   background-color: var(--secondary-color);
 }
 
-.card > .card-heading > .x-menu:hover > div {
+.dialog > .dialog-heading > .x-menu:hover > div {
   background-color: var(--white);
   border: 0.2rem solid var(--white);
 }
 
-.card > .card-heading > .x-menu > div {
+.dialog > .dialog-heading > .x-menu > div {
   transition: transform 300ms ease-in-out;
   transform-origin: center;
   border-radius: 1rem;
-  max-width: 100%;
-  background-color: var(--black);
-  border: 0.2rem solid var(--black);
+  min-width: 45%;
+  background-color: rgb(100, 100, 100);
+  border: 0.2rem solid rgb(100, 100, 100);
 }
 
-.card > .card-heading > .x-menu > .first-child {
-  transform: translateY(0.5rem) rotate(45deg);
+.dialog > .dialog-heading > .x-menu > .first-child {
+  transform: translateY(0.65rem) rotate(45deg);
 }
 
-.card > .card-heading > .x-menu > .mid-child {
-  opacity: 0;
-  transform: scale(0);
-}
-
-.card > .card-heading > .x-menu > .last-child {
-  transform: translateY(-0.535rem) rotate(-45deg);
+.dialog > .dialog-heading > .x-menu > .last-child {
+  transform: translateY(-0.6rem) rotate(-45deg);
 }
 
 .last-skin {
@@ -610,7 +634,7 @@ body .full-width {
     font-size: 1.5rem;
   }
 
-  .card-heading > h3 {
+  .dialog-heading > h3 {
     font-size: 1.25rem;
   }
 }
@@ -733,7 +757,7 @@ body .full-width {
     grid-column: auto;
   }
 
-  .card-container {
+  .dialog-container {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.55);
@@ -742,7 +766,7 @@ body .full-width {
     transition: all 300ms ease-in-out;
   }
 
-  .card {
+  .dialog {
     justify-content: unset;
     width: 90vw;
     min-height: 55vh;
@@ -752,7 +776,7 @@ body .full-width {
     padding-bottom: 1.5rem;
   }
 
-  .card-content {
+  .dialog-content {
     margin: auto 0;
     display: flex;
     flex-flow: column;
@@ -760,19 +784,6 @@ body .full-width {
     justify-content: center;
     padding: 0 3.5rem;
     gap: 1.5rem;
-  }
-
-  .card > .card-heading > .x-menu > .first-child {
-    transform: translateY(0.5rem) rotate(45deg);
-  }
-
-  .card > .card-heading > .x-menu > .mid-child {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  .card > .card-heading > .x-menu > .last-child {
-    transform: translateY(-0.545rem) rotate(-45deg);
   }
 }
 
@@ -814,12 +825,12 @@ body .full-width {
 }
 
 @media (max-height: 850px) {
-  .card {
+  .dialog {
     max-width: 70vw;
     max-height: 70vh;
   }
 
-  .card > .card-content > img {
+  .dialog > .dialog-content > img {
     max-height: 40vh;
     object-fit: contain;
   }
@@ -831,39 +842,39 @@ body .full-width {
 }
 
 @media (max-height: 650px) {
-  .card {
+  .dialog {
     max-width: 60vw;
     max-height: 60vh;
   }
 
-  .card-content h4,
-  .card-content span {
+  .dialog-content h4,
+  .dialog-content span {
     font-size: 1.6rem;
   }
 }
 
 @media (max-height: 575px) {
-  .card {
+  .dialog {
     width: auto;
     max-width: 55vw;
     min-height: 90%;
     padding-bottom: 0;
   }
 
-  .card > .card-content {
+  .dialog > .dialog-content {
     margin-top: auto;
     margin-bottom: auto;
 
     align-self: center;
   }
 
-  .card > .card-content > img {
+  .dialog > .dialog-content > img {
     max-height: 30vh;
   }
 }
 
 @media (max-height: 575px) and (min-width: 800px) {
-  .card {
+  .dialog {
     min-width: 50%;
     max-width: 55vw;
     max-height: 50%;

@@ -1,4 +1,5 @@
 /* :root serve para criar variáveis css */
+@import url("https://fonts.googleapis.com/css2?family=Chewy&display=swap");
 
 :root {
   --primary-color: rgb(51, 0, 85);
@@ -71,6 +72,21 @@ h1 {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes loading {
+  0% {
+    content: "";
+  }
+  33% {
+    content: ".";
+  }
+  66% {
+    content: "..";
+  }
+  100% {
+    content: "...";
   }
 }
 
@@ -358,11 +374,157 @@ table th {
   grid-column: span 2;
 }
 
-.contact-form .form-grid {
+.form-grid {
   border: none;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
   gap: var(--gap);
+}
+
+.ask-yuubee-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ask-yuubee-container h2,
+.ask-yuubee-container p {
+  margin: 0;
+}
+
+.ask-yuubee-container img {
+  width: 36rem;
+  height: 36rem;
+}
+
+.ask-yuubee-container .options {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ask-yuubee-container .options {
+  width: 100%;
+}
+
+.ask-yuubee-container .options > .form-group {
+  max-width: unset;
+  flex: 1 1 32rem;
+}
+
+.ask-yuubee-container .options > .form-group > label {
+  margin-bottom: 0.25rem;
+}
+
+.ask-yuubee-container .options > p {
+  font-size: 4rem;
+  font-weight: bold;
+  align-self: flex-end;
+  text-align: center;
+}
+
+.ask-yuubee-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.choosing {
+  display: none;
+  margin-top: 6rem;
+}
+
+.choosing::after {
+  content: "";
+  animation: 0.5s loading ease-in-out 0s infinite alternate;
+}
+
+.selection {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 240, 0);
+  font-family: "Chewy", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  gap: 1.5rem;
+}
+
+.selection > h3 {
+  font-size: 3rem;
+  font-family: "Chewy", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.given-options,
+.chosen {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 50rem;
+  height: 7.5rem;
+  padding: 0 1rem;
+  background-color: rgb(255, 160, 210);
+  border-radius: 1rem;
+}
+
+.given-options {
+  justify-content: space-between;
+}
+
+.given-options > span:not(.opt) {
+  color: var(--primary-color);
+}
+
+.chosen {
+  justify-content: center;
+}
+
+.chosen > p {
+  font-size: inherit;
+}
+
+.chosen > span {
+  display: none;
+}
+
+.chosen > span::after {
+  content: "";
+  animation: 0.5s loading ease-in-out 0s infinite alternate;
+}
+
+.ask-again,
+.new-question {
+  width: 100%;
+  max-width: 50rem;
+  height: 3.75rem;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  border-radius: 0.5rem;
+  border: 0.25rem solid var(--black);
+}
+
+.ask-again {
+  color: var(--primary-color);
+  background-color: transparent;
+  transition: all 300ms ease-in-out;
+}
+
+.ask-again:hover {
+  color: inherit;
+  background-color: var(--primary-color);
+}
+
+.new-question {
+  background-color: var(--primary-color);
 }
 
 .form-grid legend {
@@ -394,12 +556,6 @@ table th {
   border: 0.2rem solid var(--white);
 }
 
-.form-group input:hover,
-.form-group textarea:hover {
-  background-color: rgba(255, 255, 255, 0.75);
-  border: 0.2rem solid var(--black);
-}
-
 .form-group input:focus,
 .form-group textarea:focus {
   caret-color: var(--white);
@@ -421,20 +577,26 @@ body .full-width {
   transition: all 300ms ease-in-out;
 }
 
+#ask-yuubee {
+  width: 100%;
+  border: 0.5rem solid var(--primary-color);
+  color: var(--primary-color);
+}
+
 .form-group button:hover {
   border-radius: 1rem;
   background: var(--white);
   color: var(--primary-color);
 }
 
+#ask-yuubee:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: var(--very-light-gray);
-}
-
-.form-group input:hover::placeholder,
-.form-group textarea:hover::placeholder {
-  color: var(--black);
 }
 
 .footer {
@@ -646,6 +808,19 @@ body .full-width {
     grid-template-columns: 1fr;
   }
 
+  .intro-content .intro-img {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 815px) {
+  .ask-yuubee-container .options > p {
+    align-self: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 865px) {
   .skin-cell {
     width: 100%;
     height: 100%;
@@ -658,10 +833,6 @@ body .full-width {
     width: 100%;
     max-width: 100%;
     max-height: 100%;
-  }
-
-  .intro-content .intro-img {
-    grid-column: span 2;
   }
 
   .menu {
@@ -847,6 +1018,7 @@ body .full-width {
   }
 
   .nav-menu-content {
+    display: block;
     padding: 0 6.5rem;
     overflow-y: auto;
   }
@@ -893,12 +1065,15 @@ body .full-width {
   }
 }
 
-@media (min-width: 801px) {
+@media (min-width: 866px) {
   .nav-menu-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 100%;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--white);
   }
 }

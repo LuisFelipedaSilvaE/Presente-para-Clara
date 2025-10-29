@@ -52,6 +52,7 @@
               <li><a href="#top1">top 1</a></li>
               <li><a href="#pricing">pricing</a></li>
               <li><a href="#contact">contact</a></li>
+              <li><a href="#ask">ask YuuBee</a></li>
             </ul>
           </nav>
         </div>
@@ -60,7 +61,7 @@
 
     <div class="menu-spacing"></div>
 
-    <section id="home" class="intro main-bg section">
+    <section id="home" class="main-bg section">
       <div class="main-content intro-content">
         <div class="intro-text-content">
           <h2>Introduction</h2>
@@ -380,7 +381,7 @@
       </div>
     </section>
 
-    <section id="contact" class="intro main-bg section">
+    <section id="contact" class="main-bg section">
       <div class="main-content intro-content">
         <div class="intro-text-content">
           <h2>Contact us</h2>
@@ -447,6 +448,57 @@
             </div>
           </fieldset>
         </div>
+      </div>
+    </section>
+
+    <section id="ask" class="section main-content ask-yuubee-container">
+      <h2>Ask YuuBee</h2>
+      <img src="./assets/img/yuubee.png" alt="Yuumi's YuuBee skin" />
+      <p>
+        Don't just purr-sist in doubt! Let YuuBee bzz-bzz the right answer to
+        you.
+      </p>
+      <form id="ask-yuubee-form" class="form-grid">
+        <div class="options">
+          <div class="form-group">
+            <label for="option-1">1<sup>st</sup> option</label>
+            <input
+              type="text"
+              name="option-1"
+              id="option-1"
+              placeholder="Your 1st option"
+              required
+            />
+          </div>
+          <p>vs.</p>
+          <div class="form-group">
+            <label for="option-2">2<sup>nd</sup> option</label>
+            <input
+              type="text"
+              name="option-2"
+              id="option-2"
+              placeholder="Your 2nd option"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <button id="ask-yuubee" class="full-width" type="submit">Ask</button>
+        </div>
+      </form>
+      <span class="choosing">Loading</span>
+      <div class="selection">
+        <div class="given-options">
+          <span class="opt"></span> <span>vs.</span>
+          <span class="opt"></span>
+        </div>
+        <h3>YuuBee Chose:</h3>
+        <div class="chosen">
+          <p></p>
+          <span>Choosing</span>
+        </div>
+        <button class="ask-again">Ask Again</button>
+        <button class="new-question">New Question</button>
       </div>
     </section>
 

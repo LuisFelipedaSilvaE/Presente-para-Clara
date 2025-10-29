@@ -1,6 +1,8 @@
 const dialogContainer = document.querySelector(".dialog-container");
 const dialog = document.querySelector(".dialog");
 const mobileMenu = document.querySelector("#mobile-menu");
+const yuubeeForm = document.querySelector("#ask-yuubee-form");
+const selection = document.querySelector(".selection");
 
 function clearDialogStyles() {
   dialogContainer.style.display = "none";
@@ -79,4 +81,47 @@ document.querySelectorAll(".skin-cell").forEach((img, index) => {
     document.querySelector("#dialog-img").setAttribute("src", src);
     document.querySelector("#dialog-img").setAttribute("alt", alt);
   });
+});
+
+yuubeeForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  document.querySelector(".choosing").style.display = "inline-block";
+  const formData = new FormData(yuubeeForm);
+  const options = [...formData.values()];
+  const randomChoice = options[Math.floor(Math.random() * options.length)];
+  console.log(randomChoice);
+  setTimeout(() => {
+    document.querySelector(".choosing").style.display = "none";
+    yuubeeForm.style.display = "none";
+    document.querySelectorAll(".opt").forEach((opt, i) => {
+      opt.innerText = options[i];
+    });
+    document.querySelector(".chosen > p").innerText = randomChoice;
+    selection.style.display = "flex";
+  }, 2000);
+});
+
+document.querySelector(".ask-again").addEventListener("click", () => {
+  const chosenP = document.querySelector(".chosen > p");
+  const chosenSpan = document.querySelector(".chosen > span");
+  chosenP.style.display = "none";
+  chosenSpan.style.display = "inline-block";
+  let newRandomChoice = [];
+  document.querySelectorAll(".opt").forEach((opt) => {
+    newRandomChoice.push(opt.innerText);
+  });
+
+  setTimeout(() => {
+    chosenSpan.style.display = "none";
+    chosenP.innerText =
+      newRandomChoice[Math.floor(Math.random() * newRandomChoice.length)];
+    chosenP.style.display = "inline-block";
+  }, 1000);
+});
+
+document.querySelector(".new-question").addEventListener("click", () => {
+  selection.style.display = "none";
+  yuubeeForm.reset();
+  yuubeeForm.style.display = "flex";
 });

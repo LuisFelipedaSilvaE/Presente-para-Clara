@@ -3,41 +3,41 @@ const dialog = document.querySelector(".dialog");
 const mobileMenu = document.querySelector("#mobile-menu");
 const yuubeeForm = document.querySelector("#ask-yuubee-form");
 const selection = document.querySelector(".selection");
+const menuAnimation = document.querySelector(".animation-complementation");
+const mainMenu = document.querySelector("aside.menu");
 
 function clearDialogStyles() {
-  dialogContainer.style.display = "none";
-  dialog.style.opacity = 0;
-  dialog.style.scale = 0;
-}
-
-mobileMenu.addEventListener("click", () => {
-  document.querySelector("aside.menu").classList.toggle("toggle-menu");
-  mobileMenu.classList.toggle("x-menu");
-
-  clearDialogStyles();
-});
-
-document.querySelector("h1#logo").addEventListener("click", () => {
-  document.querySelector("aside.menu").classList.toggle("toggle-menu");
-  mobileMenu.classList.toggle("x-menu");
-
-  clearDialogStyles();
-});
-
-document.querySelector("ul#navigation").addEventListener("click", () => {
-  document.querySelector("aside.menu").classList.toggle("toggle-menu");
-  mobileMenu.classList.toggle("x-menu");
-
-  clearDialogStyles();
-});
-
-document.querySelector("#close-dialog").addEventListener("click", () => {
   dialogContainer.style.opacity = 0;
   setTimeout(() => {
     dialogContainer.style.display = "none";
   }, 300);
   dialog.style.opacity = 0;
   dialog.style.scale = 0;
+}
+
+function togglingMenuStyles() {
+  mainMenu.classList.toggle("toggle-menu");
+  menuAnimation.classList.toggle("toggle-animation-complementation");
+  mobileMenu.classList.toggle("x-menu");
+}
+
+mobileMenu.addEventListener("click", () => {
+  togglingMenuStyles();
+  clearDialogStyles();
+});
+
+document.querySelector("h1#logo").addEventListener("click", () => {
+  togglingMenuStyles();
+  clearDialogStyles();
+});
+
+document.querySelector("ul#navigation").addEventListener("click", () => {
+  togglingMenuStyles();
+  clearDialogStyles();
+});
+
+document.querySelector("#close-dialog").addEventListener("click", () => {
+  clearDialogStyles();
 });
 
 document.querySelectorAll(".skin-cell").forEach((img, index) => {

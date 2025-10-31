@@ -26,6 +26,7 @@
       <div class="last-child"></div>
     </div>
     <aside class="menu white-bg">
+      <div class="animation-complementation"></div>
       <div class="main-content menu-content">
         <div class="nav-menu-content">
           <h1 id="logo">
@@ -110,7 +111,7 @@
           by attaching to them, providing shields, and firing a magical
           projectile to slow and damage enemies.
         </p>
-        <div class="grid">
+        <div class="skills-container">
           <article>
             <div class="centered-heading">
               <img
@@ -194,7 +195,7 @@
           <span style="font-style: italic">Hint:</span> Tap or click on a skin
           to view its details.
         </p>
-        <div class="grid">
+        <div class="gallery-container">
           <div class="gallery-img">
             <img
               class="skin-cell"
@@ -398,7 +399,7 @@
           />
         </div>
         <div class="contact-form">
-          <fieldset class="form-grid">
+          <fieldset class="form-content">
             <legend>Contact Form</legend>
             <div class="form-group">
               <label for="first-name">First Name</label>
@@ -451,54 +452,58 @@
       </div>
     </section>
 
-    <section id="ask" class="section main-content ask-yuubee-container">
-      <h2>Ask YuuBee</h2>
-      <img src="./assets/img/yuubee.png" alt="Yuumi's YuuBee skin" />
-      <p>
-        Don't just purr-sist in doubt! Let YuuBee bzz-bzz the right answer to
-        you.
-      </p>
-      <form id="ask-yuubee-form" class="form-grid">
-        <div class="options">
-          <div class="form-group">
-            <label for="option-1">1<sup>st</sup> option</label>
-            <input
-              type="text"
-              name="option-1"
-              id="option-1"
-              placeholder="Your 1st option"
-              required
-            />
+    <section id="ask" class="section">
+      <div class="main-content ask-yuubee-container">
+        <h2>Ask YuuBee</h2>
+        <img src="./assets/img/yuubee.png" alt="Yuumi's YuuBee skin" />
+        <p>
+          Don't just purr-sist in doubt! Let YuuBee bzz-bzz the right answer to
+          you.
+        </p>
+        <form id="ask-yuubee-form" class="form-content">
+          <div class="options">
+            <div class="form-group">
+              <label for="option-1">1<sup>st</sup> option</label>
+              <input
+                type="text"
+                name="option-1"
+                id="option-1"
+                placeholder="Your 1st option"
+                required
+              />
+            </div>
+            <p>vs.</p>
+            <div class="form-group">
+              <label for="option-2">2<sup>nd</sup> option</label>
+              <input
+                type="text"
+                name="option-2"
+                id="option-2"
+                placeholder="Your 2nd option"
+                required
+              />
+            </div>
           </div>
-          <p>vs.</p>
           <div class="form-group">
-            <label for="option-2">2<sup>nd</sup> option</label>
-            <input
-              type="text"
-              name="option-2"
-              id="option-2"
-              placeholder="Your 2nd option"
-              required
-            />
+            <button id="ask-yuubee" class="full-width" type="submit">
+              Ask
+            </button>
           </div>
+        </form>
+        <span class="choosing">Loading</span>
+        <div class="selection">
+          <div class="given-options">
+            <span class="opt"></span> <span>vs.</span>
+            <span class="opt"></span>
+          </div>
+          <h3>YuuBee Chose:</h3>
+          <div class="chosen">
+            <p></p>
+            <span>Choosing</span>
+          </div>
+          <button class="ask-again">Ask Again</button>
+          <button class="new-question">New Question</button>
         </div>
-        <div class="form-group">
-          <button id="ask-yuubee" class="full-width" type="submit">Ask</button>
-        </div>
-      </form>
-      <span class="choosing">Loading</span>
-      <div class="selection">
-        <div class="given-options">
-          <span class="opt"></span> <span>vs.</span>
-          <span class="opt"></span>
-        </div>
-        <h3>YuuBee Chose:</h3>
-        <div class="chosen">
-          <p></p>
-          <span>Choosing</span>
-        </div>
-        <button class="ask-again">Ask Again</button>
-        <button class="new-question">New Question</button>
       </div>
     </section>
 

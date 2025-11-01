@@ -865,6 +865,12 @@ body .full-width {
     bottom: 0;
     text-align: center;
     transform: translateY(-100%);
+    box-shadow: unset;
+    transition: all 750ms ease-out;
+  }
+
+  .toggle-menu {
+    transform: translateY(0);
     transition: all 750ms
       linear(
         0 0%,
@@ -906,10 +912,6 @@ body .full-width {
         0.99 97.73%,
         1 100%
       );
-  }
-
-  .toggle-menu {
-    transform: translateY(0);
   }
 
   .toggle-animation-complementation {
@@ -991,7 +993,9 @@ body .full-width {
   }
 
   .menu-content {
+    width: 100%;
     height: 100%;
+    padding: 2rem 0;
   }
 
   .close-menu {
@@ -1092,7 +1096,7 @@ body .full-width {
 
   .nav-menu-content {
     display: block;
-    padding: 0 6.5rem;
+    padding: 0 5rem;
     overflow-y: auto;
     scrollbar-color: var(--primary-color) var(--white);
   }

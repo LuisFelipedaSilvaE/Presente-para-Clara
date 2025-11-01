@@ -183,7 +183,6 @@ table th {
   z-index: 1;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
     0px 1px 2px 0px rgba(0, 0, 0, 0.06);
-  overflow: auto;
 }
 
 .menu-content {
@@ -201,7 +200,7 @@ table th {
   color: var(--primary-color);
 }
 
-.menu ul {
+#navigation {
   display: flex;
   list-style: none;
   justify-content: center;
@@ -209,14 +208,14 @@ table th {
   gap: 2.5rem;
 }
 
-.menu ul li a {
+#navigation > li > a {
   display: block;
   padding: 2rem 0;
   font-size: 1.8rem;
   position: relative;
 }
 
-.menu ul li a::after {
+#navigation > li > a::after {
   content: "";
   position: absolute;
   bottom: 1.75rem;
@@ -227,7 +226,7 @@ table th {
   transition: all 300ms ease-in-out;
 }
 
-.menu ul li a:hover::after {
+#navigation > li > a:hover::after {
   width: 100%;
   left: 0;
 }
@@ -860,9 +859,11 @@ body .full-width {
 
 @media (max-width: 865px) {
   .menu {
-    min-width: 100vw;
-    min-height: 100vh;
-    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    top: 0;
     text-align: center;
     transform: translateY(-100%);
     box-shadow: unset;
@@ -974,28 +975,41 @@ body .full-width {
     justify-content: center;
   }
 
-  .menu ul li a {
-    transition: all 300ms ease-in-out;
+  .menu-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 2.5rem;
   }
 
-  .menu ul li a:hover {
+  #navigation {
+    gap: 1.5rem;
+  }
+
+  .nav-menu-content {
+    margin: 2.5rem 0;
+    padding: 0 2.5rem;
+  }
+
+  #navigation > li > a {
+    transition: all 300ms ease-in-out;
+    padding: 1rem 0;
+  }
+
+  #navigation > li > a:hover {
     font-size: 105%;
     font-weight: bold;
     color: var(--secondary-color);
   }
 
-  .menu ul li a::after {
+  #navigation > li > a::after {
     all: unset;
   }
 
-  .menu ul li a:hover::after {
+  #navigation > li > a:hover::after {
     all: unset;
-  }
-
-  .menu-content {
-    width: 100%;
-    height: 100%;
-    padding: 2rem 0;
   }
 
   .close-menu {
@@ -1096,7 +1110,6 @@ body .full-width {
 
   .nav-menu-content {
     display: block;
-    padding: 0 5rem;
     overflow-y: auto;
     scrollbar-color: var(--primary-color) var(--white);
   }

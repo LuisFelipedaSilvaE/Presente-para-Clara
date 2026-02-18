@@ -181,7 +181,8 @@ table th {
   right: 0;
   width: 100%;
   z-index: 1;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
+  box-shadow:
+    0px 1px 3px 0px rgba(0, 0, 0, 0.1),
     0px 1px 2px 0px rgba(0, 0, 0, 0.06);
 }
 
@@ -273,7 +274,8 @@ table th {
 
 .centered-heading img {
   border-radius: 1rem;
-  transition: all 300ms ease-in-out;
+  width: 6rem;
+  height: 6rem;
 }
 
 .centered-heading > .main-h3-heading {
@@ -328,7 +330,9 @@ table th {
 
 .gallery-img .skin-cell:hover {
   cursor: pointer;
-  translate: 1.5%, -1.5%;
+  translate:
+    1.5%,
+    -1.5%;
   scale: 1.2;
   rotate: 5deg;
 }
@@ -468,15 +472,37 @@ table th {
   justify-content: center;
   align-items: center;
   color: rgb(255, 240, 0);
-  font-family: "Chewy", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family:
+    "Chewy",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
   gap: 1.5rem;
 }
 
 .selection > h3 {
   font-size: 3rem;
-  font-family: "Chewy", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family:
+    "Chewy",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
 }
 
 .given-options,

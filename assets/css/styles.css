@@ -1110,8 +1110,13 @@ body .full-width {
 
   .nav-menu-content {
     display: block;
-    overflow-y: auto;
     scrollbar-color: var(--primary-color) var(--white);
+  }
+}
+
+@media (max-height: 850px) and (max-width: 865px) {
+  .nav-menu-content {
+    overflow-y: auto;
   }
 }
 
@@ -1138,7 +1143,6 @@ body .full-width {
   .dialog > .dialog-content {
     margin-top: auto;
     margin-bottom: auto;
-
     align-self: center;
   }
 

@@ -77,16 +77,26 @@ h1 {
 
 @keyframes loading {
   0% {
-    content: "";
+    transform: translate(0) scale(1);
   }
-  33% {
-    content: ".";
+  25% {
+    transform: translate(0, -6.5px) scale(1.5);
   }
-  66% {
-    content: "..";
+  65% {
+    transform: translate(0, 0) scale(1);
   }
   100% {
-    content: "...";
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -165,6 +175,7 @@ table th {
 }
 
 .main-content {
+  /* background-color: var(--white); */
   max-width: 120rem;
   margin: 0 auto;
   padding: 10rem var(--gap);
@@ -424,6 +435,7 @@ table th {
 .ask-yuubee-container .options {
   display: flex;
   flex-flow: row wrap;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
@@ -431,15 +443,6 @@ table th {
 
 .ask-yuubee-container .options {
   width: 100%;
-}
-
-.ask-yuubee-container .options > .form-group {
-  max-width: unset;
-  flex: 1 1 32rem;
-}
-
-.ask-yuubee-container .options > .form-group > label {
-  margin-bottom: 0.25rem;
 }
 
 .ask-yuubee-container .options > p {
@@ -455,23 +458,13 @@ table th {
   align-items: center;
 }
 
-.choosing {
-  display: none;
-  margin-top: 6rem;
-}
-
-.choosing::after {
-  content: "";
-  animation: 0.5s loading ease-in-out 0s infinite alternate;
-}
-
 .selection {
   width: 100%;
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: rgb(255, 240, 0);
+  color: #a35a30;
   font-family:
     "Chewy",
     system-ui,
@@ -489,6 +482,7 @@ table th {
 }
 
 .selection > h3 {
+  color: #a35a30;
   font-size: 3rem;
   font-family:
     "Chewy",
@@ -513,8 +507,16 @@ table th {
   max-width: 50rem;
   height: 7.5rem;
   padding: 0 1rem;
-  background-color: rgb(255, 160, 210);
+  background-color: #fce53d;
   border-radius: 1rem;
+  overflow: hidden;
+}
+
+.given-options > span,
+.chosen > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .given-options {
@@ -527,62 +529,65 @@ table th {
 
 .chosen {
   justify-content: center;
+  gap: 2rem;
 }
 
-.chosen > p {
-  font-size: inherit;
-}
-
-.chosen > span {
-  display: none;
-}
-
-.chosen > span::after {
-  content: "";
-  animation: 0.5s loading ease-in-out 0s infinite alternate;
+.chosen > .spinner {
+  border-color: #a35a30;
+  border-right-color: transparent;
 }
 
 .ask-again,
 .new-question {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  color: var(--primary-color);
+  z-index: 0;
   width: 100%;
   max-width: 50rem;
   height: 3.75rem;
   font-size: inherit;
   font-family: inherit;
-  color: inherit;
   border-radius: 0.5rem;
-  border: 0.25rem solid var(--black);
-}
-
-.ask-again {
-  color: var(--primary-color);
-  background-color: transparent;
+  border: 0.25rem solid var(--primary-color);
   transition: all 300ms ease-in-out;
 }
 
-.ask-again:hover {
-  color: inherit;
-  background-color: var(--primary-color);
+.ask-again:hover,
+.new-question:hover {
+  color: #fce53d;
 }
 
-.new-question {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--primary-color);
-}
-
-.new-question::after {
+.new-question::after,
+.ask-again::after {
+  content: "";
   position: absolute;
+  z-index: -1;
   left: 0;
   top: 0;
-  content: "";
+  transform: translateX(-100%);
+  background-color: var(--primary-color);
   width: 100%;
   height: 100%;
   transition: all 300ms ease-in-out;
 }
 
-.new-question:hover::after {
-  background-color: rgba(255, 255, 255, 0.25);
+.new-question:hover::after,
+.ask-again:hover::after {
+  transform: translateX(0);
+  color: #fce53d;
+}
+
+.spinner {
+  display: inline-block;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0.5rem solid var(--primary-color);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: 1s spin linear 0s infinite normal;
+  transition: all 300ms ease-in-out;
 }
 
 .form-content legend {
@@ -592,12 +597,16 @@ table th {
 }
 
 .form-group {
-  flex: 1 1 32rem;
+  flex: 1 1 22.2rem;
+}
+
+.ask-yuubee-container .form-group {
+  flex: 1 1 16.4rem;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 .form-group input,
@@ -629,12 +638,17 @@ body .full-width {
   border: 0.5rem solid var(--white);
   background: none;
   color: var(--white);
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
   font-size: 3rem;
   transition: all 300ms ease-in-out;
 }
 
 #ask-yuubee {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
   width: 100%;
   border: 0.5rem solid var(--primary-color);
   color: var(--primary-color);
@@ -651,19 +665,27 @@ body .full-width {
   color: var(--white);
 }
 
+#ask-yuubee:hover > .spinner {
+  border-color: var(--white);
+  border-right-color: transparent;
+}
+
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: var(--very-light-gray);
 }
 
 .footer {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   text-align: center;
   color: #4b0082;
 }
 
-.footer p {
+.footer > p {
   margin: 0;
-  padding: 3rem;
 }
 
 .heart {
@@ -686,6 +708,7 @@ body .full-width {
 }
 
 .back-to-top {
+  opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -836,50 +859,25 @@ body .full-width {
   transform: translateY(-0.6rem) rotate(-45deg);
 }
 
-@media (max-width: 560px) {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-size: 3rem;
+@media (max-width: 1175px) {
+  .gallery-img {
+    flex: 1 1 calc(50% - 0.5rem);
   }
 
-  p {
-    font-size: 1.5rem;
-  }
-
-  .dialog-heading > h3 {
-    font-size: 1.25rem;
+  .last-skin {
+    flex-grow: 0;
   }
 }
 
-@media (max-width: 800px) {
-  .intro-content {
-    grid-template-columns: 1fr;
-  }
-
-  .intro-content .intro-img {
-    grid-column: span 2;
-  }
-
-  .gallery-container > .gallery-img,
-  .skills-container > article {
-    width: auto;
-    flex: 1 1 100%;
-  }
-
-  .gallery-container > .last-skin,
-  .skills-container > .last-skill {
-    max-width: unset;
-  }
-}
-
-@media (max-width: 815px) {
-  .ask-yuubee-container .options > p {
-    align-self: center;
+@media (min-width: 866px) {
+  .nav-menu-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    scrollbar-color: var(--primary-color) var(--white);
   }
 }
 
@@ -1067,10 +1065,6 @@ body .full-width {
     justify-content: space-evenly;
   }
 
-  .x-menu:hover {
-    background-color: var(--secondary-color);
-  }
-
   .x-menu > div {
     width: 65%;
   }
@@ -1121,6 +1115,20 @@ body .full-width {
     padding: 0 3.5rem;
     gap: 1.5rem;
   }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 2.5rem;
+  }
+
+  .ask-yuubee-container .options > p {
+    font-size: 3rem;
+  }
+
+  .form-group button {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
 }
 
 @media (max-height: 850px) {
@@ -1133,16 +1141,32 @@ body .full-width {
     max-height: 40vh;
     object-fit: contain;
   }
-
-  .nav-menu-content {
-    display: block;
-    scrollbar-color: var(--primary-color) var(--white);
-  }
 }
 
 @media (max-height: 850px) and (max-width: 865px) {
   .nav-menu-content {
     overflow-y: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .intro-content {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-content .intro-img {
+    grid-column: span 2;
+  }
+
+  .gallery-container > .gallery-img,
+  .skills-container > article {
+    width: auto;
+    flex: 1 1 100%;
+  }
+
+  .gallery-container > .last-skin,
+  .skills-container > .last-skill {
+    max-width: unset;
   }
 }
 
@@ -1186,23 +1210,49 @@ body .full-width {
   }
 }
 
-@media (min-width: 866px) {
-  .nav-menu-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    white-space: nowrap;
+@media (max-width: 560px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 1.75rem;
+  }
+
+  .ask-yuubee-container .options > p {
+    font-size: 2rem;
+  }
+
+  .form-group button {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .dialog-heading > h3 {
+    font-size: 1.25rem;
+  }
+
+  .form-group label {
+    font-size: 1.5rem;
   }
 }
 
-@media (max-width: 1175px) {
-  .gallery-img {
-    flex: 1 1 calc(50% - 0.5rem);
+@media (max-width: 460px) {
+  .ask-yuubee-container .options {
+    gap: 0;
   }
-
-  .last-skin {
-    flex-grow: 0;
+  .ask-yuubee-container .options > p {
+    padding-top: 2rem;
+    width: 100%;
   }
 }

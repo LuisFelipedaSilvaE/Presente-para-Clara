@@ -8,6 +8,66 @@ const mainMenu = document.querySelector("aside.menu");
 const spinner = document.createElement("span");
 const askAgainButton = document.querySelector(".ask-again");
 const askButton = document.querySelector("#ask-yuubee");
+const carouselUpArrow = document.querySelector(".carousel-arrow-up");
+const carouselDownArrow = document.querySelector(".carousel-arrow-down");
+const skills = document.querySelectorAll(".skill");
+const skillDescription = [
+  {
+    name: `Feline Friendship`,
+    skillType: `Passive`,
+    description: `Periodically, Yuumi’s Basic Attacks and Abilities will Shield
+              Yuumi. If Yuumi is Attached to an ally or attaches within a few
+              seconds they are Shielded for the same amount. While Attached to
+              an ally, Yuumi grants them Friendship stacks when they kill enemy
+              champions or minions. The ally with the highest Friendship stack
+              becomes Yuumi’s Best Friend, which empowers her abilities towards
+              them.`,
+  },
+  {
+    name: `Prowling Projectile`,
+    skillType: `1`,
+    description: `Yuumi fires a missile, dealing Magic Damage to the first target
+              hit. It deals bonus damage and Slows if it takes at least 1 second
+              to get to its target. While Attached, the missile can be
+              controlled with your cursor. Best Friend Bonus: Applies Slow on
+              hit, and when hitting an enemy champion, Yuumi’s Attached ally
+              gains bonus Magic Damage toward them.`,
+  },
+  {
+    name: `You and Me!`,
+    skillType: `2`,
+    description: `Passive: While Yuumi is Attached to her Best Friend, She gains
+              bonus Healing and Shielding, and her Best Friend also receives
+              additional Healing effects. Active: Yuumi dashes to a target ally,
+              becoming untargetable from everything except turrets.`,
+  },
+  {
+    name: `Zoomies`,
+    skillType: `3`,
+    description: `Yuumi grants herself a Shield and gains Attack Speed. She also
+              gains Move Speed while the Shield is active. If Yuumi is Attached,
+              Zoomies affect her ally.`,
+  },
+  {
+    name: `Final Chapter`,
+    skillType: `Ultimate`,
+    description: `Yuumi launches five waves in the target direction. While Attached
+              Yuumi can steer the direction of the waves. Detaching stops this
+              bonus effect. Allied champions hit by the waves are Healed, with
+              increased Healing for the Best Friend. Excess Healing converts
+              into a Shield. Enemies struck by the waves take Magic Damage and
+              are Slowed. The Slow stacks and refreshes on each hit.`,
+  },
+];
+const carouselItemStyles = skills[0].computedStyleMap();
+let isCarouselRow = false;
+const carouselStyles = document
+  .querySelector(".skills-container")
+  .computedStyleMap();
+let carouselItemSize;
+let carouselSpacing;
+let translateValue = 0;
+calcCarouselTranslateValue();
 
 spinner.className = "spinner";
 const dots = [..."..."].map((dot, index) => {
@@ -21,27 +81,26 @@ const dots = [..."..."].map((dot, index) => {
 window.addEventListener("scroll", () => {
   const posicaoAtual = Math.ceil(window.innerHeight + window.scrollY);
   if (posicaoAtual > document.documentElement.scrollHeight - 95) {
-    document.querySelector(".back-to-top").style.opacity = 1;
-    console.log(window.outerHeight);
+    document.querySelector(".back-to-top").style.display = "flex";
   } else {
-    document.querySelector(".back-to-top").style.opacity = 0;
+    document.querySelector(".back-to-top").style.display = "none";
   }
 });
 
-function clearDialogStyles() {
-  dialogContainer.style.opacity = 0;
-  setTimeout(() => {
-    dialogContainer.style.display = "none";
-  }, 300);
-  dialog.style.opacity = 0;
-  dialog.style.scale = 0;
-}
+window.addEventListener("resize", () => {
+  disableCarouselUpArrow();
+  if (carouselDownArrow.disabled) {
+    enableCarouselDownArrow();
+  }
 
-function togglingMenuStyles() {
-  mainMenu.classList.toggle("toggle-menu");
-  menuAnimation.classList.toggle("toggle-animation-complementation");
-  mobileMenu.classList.toggle("x-menu");
-}
+  translateValue = 0;
+  skills.forEach((skill) => {
+    skill.style.transform = "translateY(0)";
+    skill.style.transform = "translateX(0)";
+  });
+
+  calcCarouselTranslateValue();
+});
 
 mobileMenu.addEventListener("click", () => {
   togglingMenuStyles();
@@ -173,3 +232,119 @@ document.querySelector(".new-question").addEventListener("click", () => {
   yuubeeForm.reset();
   yuubeeForm.style.display = "flex";
 });
+
+carouselDownArrow.addEventListener("click", () => {
+  resetCarouselArrowsOpacity();
+  translateValue -= carouselItemSize + carouselSpacing;
+  if (translateValue < -(carouselItemSize + carouselSpacing)) {
+    disableCarouselDownArrow();
+  }
+
+  skills.forEach((skill) => {
+    skill.style.transform = `translate${isCarouselRow ? "X" : "Y"}(${translateValue}rem)`;
+  });
+});
+
+carouselUpArrow.addEventListener("click", () => {
+  resetCarouselArrowsOpacity();
+  translateValue += carouselItemSize + carouselSpacing;
+  if (translateValue > -(carouselItemSize + carouselSpacing)) {
+    disableCarouselUpArrow();
+  }
+
+  skills.forEach((skill) => {
+    skill.style.transform = `translate${isCarouselRow ? "X" : "Y"}(${translateValue}rem)`;
+  });
+});
+
+skills.forEach((skill, index) => {
+  skill.addEventListener("click", (event) => {
+    document.querySelector("#skill-name").textContent =
+      skillDescription[index].name;
+    document.querySelector("#skill-type").textContent =
+      skillDescription[index].skillType;
+    document.querySelector("#skill-description").textContent =
+      skillDescription[index].description;
+    skills.forEach((item) => {
+      event.currentTarget === item
+        ? item.classList.add("selected-skill")
+        : item.classList.remove("selected-skill");
+    });
+  });
+});
+
+function calcCarouselTranslateValue() {
+  if (window.innerWidth <= 560) {
+    isCarouselRow = true;
+    for (const [prop, val] of carouselItemStyles) {
+      if (prop === "min-width") {
+        carouselItemSize = val[0].value / 10;
+        break;
+      }
+    }
+
+    for (const [prop, val] of carouselStyles) {
+      if (prop === "row-gap") {
+        carouselSpacing = val[0].value / 10;
+        break;
+      }
+    }
+
+    return;
+  }
+
+  isCarouselRow = false;
+  for (const [prop, val] of carouselItemStyles) {
+    if (prop === "min-height") {
+      carouselItemSize = val[0].value / 10;
+      break;
+    }
+  }
+
+  for (const [prop, val] of carouselStyles) {
+    if (prop === "row-gap") {
+      carouselSpacing = val[0].value / 10;
+      break;
+    }
+  }
+}
+
+function resetCarouselArrowsOpacity() {
+  enableCarouselDownArrow();
+  enableCarouselUpArrow();
+}
+
+function disableCarouselUpArrow() {
+  carouselUpArrow.style.opacity = "0.5";
+  carouselUpArrow.disabled = true;
+}
+
+function disableCarouselDownArrow() {
+  carouselDownArrow.style.opacity = "0.5";
+  carouselDownArrow.disabled = true;
+}
+
+function enableCarouselUpArrow() {
+  carouselUpArrow.style.opacity = "1";
+  carouselUpArrow.disabled = false;
+}
+
+function enableCarouselDownArrow() {
+  carouselDownArrow.style.opacity = "1";
+  carouselDownArrow.disabled = false;
+}
+
+function clearDialogStyles() {
+  dialogContainer.style.opacity = 0;
+  setTimeout(() => {
+    dialogContainer.style.display = "none";
+  }, 300);
+  dialog.style.opacity = 0;
+  dialog.style.scale = 0;
+}
+
+function togglingMenuStyles() {
+  mainMenu.classList.toggle("toggle-menu");
+  menuAnimation.classList.toggle("toggle-animation-complementation");
+  mobileMenu.classList.toggle("x-menu");
+}

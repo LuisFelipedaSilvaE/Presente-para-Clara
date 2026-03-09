@@ -111,16 +111,90 @@
           by attaching to them, providing shields, and firing a magical
           projectile to slow and damage enemies.
         </p>
-        <div class="skills-container">
-          <article>
-            <div class="centered-heading">
-              <img
-                src="assets/img/passive.avif"
-                alt="Yuumi's passive ability icon"
-              />
-              <h3 class="main-h3-heading">Passive: Feline Friendship</h3>
+        <div class="skills-section">
+          <div class="carousel">
+            <button class="carousel-arrow-up" disabled>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="white"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-big-up-dash-icon lucide-arrow-big-up-dash"
+              >
+                <path
+                  d="M9 13a1 1 0 0 0-1-1H5.061a1 1 0 0 1-.75-1.811l6.836-6.835a1.207 1.207 0 0 1 1.707 0l6.835 6.835a1 1 0 0 1-.75 1.811H16a1 1 0 0 0-1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z"
+                />
+                <path d="M9 20h6" />
+              </svg>
+            </button>
+            <ul class="skills-container">
+              <li class="skill selected-skill">
+                <img
+                  src="./assets/img/skills/passive.avif"
+                  alt="Yuumi's passive"
+                />
+                <p>Feline Friendship</p>
+              </li>
+              <li class="skill">
+                <img
+                  src="./assets/img/skills/skill-1.avif"
+                  alt="Yuumi's first ability"
+                />
+                <p style="text-wrap: wrap">Prowling Projectile</p>
+              </li>
+              <li class="skill">
+                <img
+                  src="./assets/img/skills/skill-2.avif"
+                  alt="Yuumi's second ability"
+                />
+                <p>You and Me!</p>
+              </li>
+              <li class="skill">
+                <img
+                  src="./assets/img/skills/skill-3.avif"
+                  alt="Yuumi's third ability"
+                />
+                <p>Zoomies</p>
+              </li>
+              <li class="skill">
+                <img
+                  src="./assets/img/skills/ultimate.avif"
+                  alt="Yuumi's ultimate"
+                />
+                <p>Final Chapter</p>
+              </li>
+            </ul>
+            <button class="carousel-arrow-down">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="white"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-big-down-dash-icon lucide-arrow-big-down-dash"
+              >
+                <path
+                  d="M15 11a1 1 0 0 0 1 1h2.939a1 1 0 0 1 .75 1.811l-6.835 6.836a1.207 1.207 0 0 1-1.707 0L4.31 13.81a1 1 0 0 1 .75-1.811H8a1 1 0 0 0 1-1V9a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1z"
+                />
+                <path d="M9 4h6" />
+              </svg>
+            </button>
+          </div>
+          <div class="selected-skill-desctiption">
+            <div class="selected-skill-heading-container">
+              <h2 id="skill-name">Feline Friendship</h2>
+              <p id="skill-type">Passive</p>
             </div>
-            <p>
+            <p id="skill-description">
               Periodically, Yuumi’s Basic Attacks and Abilities will Shield
               Yuumi. If Yuumi is Attached to an ally or attaches within a few
               seconds they are Shielded for the same amount. While Attached to
@@ -129,67 +203,7 @@
               becomes Yuumi’s Best Friend, which empowers her abilities towards
               them.
             </p>
-          </article>
-          <article>
-            <div class="centered-heading">
-              <img
-                src="assets/img/skill1.avif"
-                alt="Yuumi's first ability icon"
-              />
-              <h3 class="main-h3-heading">Ability 1: Prowling Projectile</h3>
-            </div>
-            <p>
-              Yuumi fires a missile, dealing Magic Damage to the first target
-              hit. It deals bonus damage and Slows if it takes at least 1 second
-              to get to its target. While Attached, the missile can be
-              controlled with your cursor. Best Friend Bonus: Applies Slow on
-              hit, and when hitting an enemy champion, Yuumi’s Attached ally
-              gains bonus Magic Damage toward them.
-            </p>
-          </article>
-          <article>
-            <div class="centered-heading">
-              <img
-                src="assets/img/skill2.avif"
-                alt="Yuumi's second ability icon"
-              />
-              <h3 class="main-h3-heading">Ability 2: You and Me!</h3>
-            </div>
-            <p>
-              Passive: While Yuumi is Attached to her Best Friend, She gains
-              bonus Healing and Shielding, and her Best Friend also receives
-              additional Healing effects. Active: Yuumi dashes to a target ally,
-              becoming untargetable from everything except turrets.
-            </p>
-          </article>
-          <article>
-            <div class="centered-heading">
-              <img
-                src="assets/img/skill3.avif"
-                alt="Yuumi's third ability icon"
-              />
-              <h3 class="main-h3-heading">Ability 3: Zoomies</h3>
-            </div>
-            <p>
-              Yuumi grants herself a Shield and gains Attack Speed. She also
-              gains Move Speed while the Shield is active. If Yuumi is Attached,
-              Zoomies affect her ally.
-            </p>
-          </article>
-          <article class="last-skill">
-            <div class="centered-heading">
-              <img src="assets/img/ult.avif" alt="Yuumi's ultimate icon" />
-              <h3 class="main-h3-heading">Ultimate: Final Chapter</h3>
-            </div>
-            <p>
-              Yuumi launches five waves in the target direction. While Attached
-              Yuumi can steer the direction of the waves. Detaching stops this
-              bonus effect. Allied champions hit by the waves are Healed, with
-              increased Healing for the Best Friend. Excess Healing converts
-              into a Shield. Enemies struck by the waves take Magic Damage and
-              are Slowed. The Slow stacks and refreshes on each hit.
-            </p>
-          </article>
+          </div>
         </div>
       </div>
     </section>
@@ -197,20 +211,22 @@
     <section id="gallery" class="white-bg section">
       <div class="grid-one-content main-content">
         <h2 class="grid-main-heading">Skins Gallery</h2>
-        <p class="grid-description">
-          Pounce into style! This gallery showcases all of Yuumi's charming
-          looks. Explore each unique theme and find the purr-fect look for your
-          next journey!
-        </p>
-        <p>
-          <span style="font-style: italic">Hint:</span> Tap or click on a skin
-          to view its details.
-        </p>
+        <div>
+          <p class="grid-description">
+            Pounce into style! This gallery showcases all of Yuumi's charming
+            looks. Explore each unique theme and find the purr-fect look for
+            your next journey!
+          </p>
+          <p>
+            <span style="font-style: italic">Hint:</span> Tap or click on a skin
+            to view its details.
+          </p>
+        </div>
         <div class="gallery-container">
           <figure class="gallery-img">
             <img
               class="skin-cell"
-              src="assets/img/basic_skin.avif"
+              src="assets/img/skins/basic_skin.avif"
               alt="Default Yuumi appearence"
               data-title="Yuumi"
               data-rarity="Common"
@@ -220,7 +236,7 @@
           <figure class="gallery-img">
             <img
               class="skin-cell"
-              src="assets/img/battle_principal.webp"
+              src="assets/img/skins/battle_principal.webp"
               alt="Battle Principal Yuumi Skin"
               data-title="Battle Principal Yuumi"
               data-rarity="Epic"
@@ -230,7 +246,7 @@
           <figure class="gallery-img">
             <img
               class="skin-cell"
-              src="assets/img/heartseeker.webp"
+              src="assets/img/skins/heartseeker.webp"
               alt="Heartseeker Yuumi Skin"
               data-title="Heartseeker Yuumi"
               data-rarity="Epic"
@@ -240,7 +256,7 @@
           <figure class="gallery-img">
             <img
               class="skin-cell"
-              src="assets/img/food_spirits.webp"
+              src="assets/img/skins/food_spirits.webp"
               alt="Food Spirits Yuumi Skin"
               data-title="Food Spirits Yuumi"
               data-rarity="Epic"
@@ -250,7 +266,7 @@
           <figure class="gallery-img">
             <img
               class="skin-cell"
-              src="assets/img/crystal_rose.webp"
+              src="assets/img/skins/crystal_rose.webp"
               alt="Crystal Rose Yuumi Skin"
               data-title="Crystal Rose Yuumi"
               data-rarity="Epic"
@@ -260,7 +276,7 @@
           <figure class="gallery-img">
             <img
               class="skin-cell"
-              src="assets/img/cafe_cuties.webp"
+              src="assets/img/skins/cafe_cuties.webp"
               alt="Cafe Cuties Yuumi Skin"
               data-title="Cafe Cuties Yuumi"
               data-rarity="Legendary"
@@ -270,7 +286,7 @@
           <figure class="gallery-img last-skin">
             <img
               class="skin-cell"
-              src="assets/img/cafe_cuties_mythic_chroma.webp"
+              src="assets/img/skins/cafe_cuties_mythic_chroma.webp"
               alt="Cafe Cuties Mythic Chroma Yuumi Skin"
               data-title="Cafe Cuties Mythic Chroma Yuumi"
               data-rarity="Mythic"
